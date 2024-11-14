@@ -5,6 +5,7 @@ export default class TestStorage extends Storage
 	#data = [];
 	constructor(initialData)
 	{
+		super();
 		this.#data = initialData;
 	}
 	loadItem()
