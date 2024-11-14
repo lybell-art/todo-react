@@ -13,6 +13,6 @@ export default function TodoInsertForm({onSubmit})
 			<p>할일 입력</p>
 			<input className={style.input} type="text" placeholder="할일을 입력하세요." required ref={inputRef} />
 		</label>
-		<button class={style.submitButton}>추가</button>
+		<button className={style.submitButton}>추가</button>
 	</form>
 }
