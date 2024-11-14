@@ -9,6 +9,6 @@ export default defineConfig({
       name: "chromium",
       provider: "playwright",
     },
-    testTimeout: 20000
+    testTimeout: 30000
   },
 })

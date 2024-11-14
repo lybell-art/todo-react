@@ -15,15 +15,14 @@ describe("입력 유효성 테스트", ()=>{
 		await expect.element(getByText("example")).toBeInTheDocument();
 	});
 
-	// test("빈 입력을 추가할 수 없는가?", async ()=>{
-	// 	const { getByText, getByRole } = render(<App />);
+	test("빈 입력을 추가할 수 없는가?", async ()=>{
+		const { getByText, getByRole } = render(<App />);
 
-	// 	const input = getByRole("textbox", {name: "inputTodo"});
-	// 	const button = getByRole("button", {name: "추가"});
-	// 	await button.click();
+		const input = getByRole("textbox", {name: "inputTodo"});
+		const button = getByRole("button", {name: "추가"});
 
-	// 	await expect.element(getByText("example")).toBeInTheDocument();
-	// });
+		await expect.element(button).toHaveStyle({backgroundColor: "#6d6e72"});
+	});
 });
 
 describe("토글 테스트", ()=>{
@@ -36,8 +35,7 @@ describe("토글 테스트", ()=>{
 		const checkbox = item.locator("..").getByRole("checkbox");
 
 		await checkbox.click();
-		//console.log(checkbox);
-		//await expect(checkbox).toBeChecked();
+		await expect.element(checkbox).toBeChecked();
 	});
 	test("토글을 다시 클릭해서 원 상태로 복귀할 수 있는가?", async ()=>{
 		const testData = new TestStorage([{id:0.1234, value: "hello", completed: false}]);
@@ -50,6 +48,6 @@ describe("토글 테스트", ()=>{
 		await checkbox.click();
 		await checkbox.click();
 
-		//await expect(checkbox).not().toBeChecked();
+		await expect.element(checkbox).not.toBeChecked();
 	});
 });
