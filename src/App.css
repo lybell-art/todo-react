@@ -1,0 +1,22 @@
+:root {
+  --gray: #6d6e72;
+  --primary: #c31c3c;
+  --primary-2: #8F142B;
+  --black: #202020;
+  --red: #EF4444;
+  --red-2: #B91C1C;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 0px;
+  max-width: 640px;
+}

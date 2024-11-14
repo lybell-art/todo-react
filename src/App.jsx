@@ -25,15 +25,15 @@ function App() {
 	const removeItem = (id)=>{
 		setTodoData( data=>data.filter( ({id})=>id !== +detail ) );
 	};
-	
+
 	return (
-		<main>
+		<>
 			<TodoInsertForm onSubmit={ addItem } />
 			<div>
-				<TodoFilter onChange={ setFilter }/>
+				<TodoFilter filter={filter} onChange={ setFilter }/>
 				<TodoList data={ filteredList } updateItem={updateItem} removeItem={removeItem} />
 			</div>
-		</main>
+		</>
 	)
 }
 
