@@ -7,10 +7,9 @@ export default class LocalStorageStore extends Storage
 	{
 		try {
 			const save = localStorage.getItem(SAVE_KEY);
-			return JSON.parse(save);
+			return JSON.parse(save) ?? [];
 		}
-		catch(e) {
-			console.log(e);
+		catch {
 			localStorage.deleteItem(SAVE_KEY);
 			return [];
 		}
