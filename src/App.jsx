@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoInsertForm from "./components/TodoInsertForm.jsx";
 import TodoFilter from "./components/TodoFilter.jsx";
 import TodoList from "./components/TodoList.jsx";
 import "./App.css";
 
-function App() {
+function App({store}) {
 	const [todoData, setTodoData] = useState([]);
 	const [filter, setFilter] = useState("all");
+	const [loaded, setLoaded] = useState(false);
 
 	const filteredList = todoData.filter(({completed})=>{
 		if(filter === "completed") return completed;
@@ -25,6 +26,17 @@ function App() {
 	const removeItem = (detail)=>{
 		setTodoData( data=>data.filter( ({id})=>id !== +detail ) );
 	};
+
+	useEffect( ()=>{
+		if(store === undefined) return;
+		setTodoData(store.loadItem());
+		setLoaded(true);
+	}, [] );
+
+	useEffect( ()=>{
+		if(store === undefined || !loaded) return;
+		store.saveItem(todoData);
+	}, [todoData, loaded] );
 
 	return (
 		<>
