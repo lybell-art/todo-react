@@ -22,14 +22,14 @@ function App() {
 			return item;
 		} ) );
 	};
-	const removeItem = (id)=>{
+	const removeItem = (detail)=>{
 		setTodoData( data=>data.filter( ({id})=>id !== +detail ) );
 	};
 
 	return (
 		<>
 			<TodoInsertForm onSubmit={ addItem } />
-			<div>
+			<div className="todo-body">
 				<TodoFilter filter={filter} onChange={ setFilter }/>
 				<TodoList data={ filteredList } updateItem={updateItem} removeItem={removeItem} />
 			</div>
